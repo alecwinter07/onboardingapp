@@ -72,3 +72,88 @@ body {
   background: var(--color-accent-tint);
   color: var(--color-primary);
 }
+
+/* Cursor refinements */
+button,
+a,
+[role="button"],
+input[type="checkbox"],
+input[type="color"],
+input[type="file"]::file-selector-button,
+select {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-accent-tint);
+  border-color: var(--color-primary) !important;
+}
+
+/* Ambient animated background */
+.ambient-bg {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.ambient-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  opacity: 0.18;
+  animation: floatBlob 18s ease-in-out infinite;
+}
+
+.ambient-blob.blob-1 {
+  width: 480px;
+  height: 480px;
+  background: #0B99FF;
+  top: -10%;
+  left: -10%;
+  animation-delay: 0s;
+}
+
+.ambient-blob.blob-2 {
+  width: 420px;
+  height: 420px;
+  background: #38BDF8;
+  bottom: -15%;
+  right: -10%;
+  animation-delay: -6s;
+}
+
+.ambient-blob.blob-3 {
+  width: 320px;
+  height: 320px;
+  background: #93C5FD;
+  top: 40%;
+  right: 15%;
+  animation-delay: -12s;
+}
+
+@keyframes floatBlob {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -40px) scale(1.08);
+  }
+  66% {
+    transform: translate(-25px, 25px) scale(0.95);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient-blob {
+    animation: none;
+  }
+}
