@@ -309,7 +309,7 @@ function QuestionnaireInner() {
 
   if (!tokenValid) {
     return (
-      <div className="min-h-screen flex items-center justify-center px-6" style={{ background: 'var(--color-bg-base)' }}>
+      <div className="min-h-screen flex items-center justify-center px-6">
         <div className="max-w-md text-center card-elevated p-10">
           <p className="font-bold mb-2" style={{ color: '#EF4444' }}>This link isn't valid.</p>
           <p className="text-sm" style={{ color: 'var(--color-body-light)' }}>{tokenError}</p>
@@ -323,7 +323,7 @@ function QuestionnaireInner() {
 
   if (allDone) {
     return (
-      <div className="min-h-screen flex items-center justify-center px-6" style={{ background: 'var(--color-bg-base)' }}>
+      <div className="min-h-screen flex items-center justify-center px-6">
         <div className="max-w-md text-center card-elevated p-10 animate-fade-in-up">
           <div
             className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl"
@@ -343,7 +343,7 @@ function QuestionnaireInner() {
   const progressPct = Math.round(((stepIndex) / SECTIONS.length) * 100);
 
   return (
-    <div className="min-h-screen" style={{ background: 'var(--color-bg-base)' }}>
+    <div className="min-h-screen">
       <header className="border-b" style={{ borderColor: 'var(--color-border)', background: 'var(--color-surface)' }}>
         <div className="max-w-2xl mx-auto px-6 py-5 flex items-center gap-2">
           {/* TODO: replace with real LEVEL logo image once provided */}
