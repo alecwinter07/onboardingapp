@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import CustomCursor from "@/components/CustomCursor";
 
 export const metadata: Metadata = {
   title: "LEVEL Market Onboarding",
@@ -22,10 +23,14 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col">
+        <CustomCursor />
         <div className="ambient-bg" aria-hidden="true">
+          <div className="ambient-mesh" />
           <div className="ambient-blob blob-1" />
           <div className="ambient-blob blob-2" />
           <div className="ambient-blob blob-3" />
+          <div className="ambient-blob blob-4" />
+          <div className="ambient-grid" />
         </div>
         {children}
       </body>
