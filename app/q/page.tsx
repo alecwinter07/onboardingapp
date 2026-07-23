@@ -93,11 +93,12 @@ function FieldInput({
             key={opt}
             type="button"
             onClick={() => toggle(opt)}
-            className={`px-3 py-1.5 rounded-full text-sm border transition ${
+            className="px-3.5 py-1.5 rounded-full text-sm font-medium border transition-all"
+            style={
               selected.includes(opt)
-                ? 'bg-blue-600 text-white border-blue-600'
-                : 'bg-white text-gray-700 border-gray-300 hover:border-blue-400'
-            }`}
+                ? { background: 'var(--color-primary)', color: 'white', borderColor: 'var(--color-primary)' }
+                : { background: 'var(--color-surface)', color: 'var(--color-body)', borderColor: 'var(--color-border)' }
+            }
           >
             {opt}
           </button>
@@ -308,75 +309,120 @@ function QuestionnaireInner() {
 
   if (!tokenValid) {
     return (
-      <CenteredMessage>
-        <p className="text-red-600 font-medium mb-2">This link isn't valid.</p>
-        <p className="text-gray-500 text-sm">{tokenError}</p>
-        <p className="text-gray-500 text-sm mt-2">Please contact your LEVEL representative for a new link.</p>
-      </CenteredMessage>
+      <div className="min-h-screen flex items-center justify-center px-6" style={{ background: 'var(--color-bg-base)' }}>
+        <div className="max-w-md text-center card-elevated p-10">
+          <p className="font-bold mb-2" style={{ color: '#EF4444' }}>This link isn't valid.</p>
+          <p className="text-sm" style={{ color: 'var(--color-body-light)' }}>{tokenError}</p>
+          <p className="text-sm mt-2" style={{ color: 'var(--color-body-light)' }}>
+            Please contact your LEVEL representative for a new link.
+          </p>
+        </div>
+      </div>
     );
   }
 
   if (allDone) {
     return (
-      <CenteredMessage>
-        <p className="text-green-600 text-xl font-semibold mb-2">All done! 🎉</p>
-        <p className="text-gray-600">Thanks for completing your onboarding. We'll take it from here — your landing page and marketing will be live soon.</p>
-      </CenteredMessage>
+      <div className="min-h-screen flex items-center justify-center px-6" style={{ background: 'var(--color-bg-base)' }}>
+        <div className="max-w-md text-center card-elevated p-10 animate-fade-in-up">
+          <div
+            className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl"
+            style={{ background: 'var(--color-accent-tint)' }}
+          >
+            ✓
+          </div>
+          <p className="text-xl font-extrabold mb-2" style={{ color: 'var(--color-heading)' }}>All done!</p>
+          <p style={{ color: 'var(--color-body-light)' }}>
+            Thanks for completing your onboarding. We'll take it from here — your landing page and marketing will be live soon.
+          </p>
+        </div>
+      </div>
     );
   }
 
   const progressPct = Math.round(((stepIndex) / SECTIONS.length) * 100);
 
   return (
-    <div className="max-w-2xl mx-auto py-12 px-6">
-      <div className="mb-8">
-        <div className="w-full bg-gray-200 rounded-full h-2 mb-2">
-          <div className="bg-blue-600 h-2 rounded-full transition-all" style={{ width: `${progressPct}%` }} />
+    <div className="min-h-screen" style={{ background: 'var(--color-bg-base)' }}>
+      <header className="border-b" style={{ borderColor: 'var(--color-border)', background: 'var(--color-surface)' }}>
+        <div className="max-w-2xl mx-auto px-6 py-5 flex items-center gap-2">
+          {/* TODO: replace with real LEVEL logo image once provided */}
+          <span className="text-xl font-extrabold tracking-tight" style={{ color: 'var(--color-heading)' }}>
+            LEVEL
+          </span>
+          <span className="text-xs font-semibold px-2 py-0.5 rounded-full step-badge">
+            Market
+          </span>
         </div>
-        <p className="text-sm text-gray-500">Step {stepIndex + 1} of {SECTIONS.length}</p>
-      </div>
+      </header>
 
-      <h1 className="text-2xl font-bold text-gray-900 mb-1">{section.title}</h1>
-      <p className="text-gray-500 mb-8">{section.description}</p>
-
-      <div className="space-y-6">
-        {section.fields.map((field) => (
-          <div key={field.key}>
-            {field.type !== 'checkbox' && (
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                {field.label} {field.required && <span className="text-red-500">*</span>}
-              </label>
-            )}
-            <FieldInput
-              field={field}
-              value={sectionData[field.key]}
-              onChange={(v) => updateField(field.key, v)}
-              token={token}
-            />
-            {field.helpText && <p className="text-xs text-gray-400 mt-1">{field.helpText}</p>}
+      <div className="max-w-2xl mx-auto py-12 px-6 animate-fade-in-up">
+        <div className="mb-10">
+          <div className="flex items-center gap-3 mb-3">
+            <span
+              className="inline-flex items-center justify-center w-8 h-8 rounded-full text-sm font-bold step-badge"
+            >
+              {String(stepIndex + 1).padStart(2, '0')}
+            </span>
+            <p className="text-sm font-medium" style={{ color: 'var(--color-body-light)' }}>
+              Step {stepIndex + 1} of {SECTIONS.length}
+            </p>
           </div>
-        ))}
-      </div>
+          <div className="w-full rounded-full h-1.5" style={{ background: 'var(--color-border)' }}>
+            <div
+              className="h-1.5 rounded-full transition-all duration-300"
+              style={{ width: `${progressPct}%`, background: 'var(--color-primary)' }}
+            />
+          </div>
+        </div>
 
-      {error && <p className="text-red-600 text-sm mt-4">{error}</p>}
+        <div className="card-elevated p-8">
+          <h1 className="text-2xl font-extrabold mb-1.5 tracking-tight" style={{ color: 'var(--color-heading)' }}>
+            {section.title}
+          </h1>
+          <p className="mb-8" style={{ color: 'var(--color-body-light)' }}>{section.description}</p>
 
-      <div className="flex justify-between mt-10">
-        <button
-          type="button"
-          disabled={stepIndex === 0}
-          onClick={() => setStepIndex(stepIndex - 1)}
-          className="px-5 py-2.5 rounded-lg text-gray-600 disabled:opacity-0"
-        >
-          Back
-        </button>
-        <button
-          type="button"
-          disabled={submitting}
-          onClick={handleContinue}
-          className="px-6 py-2.5 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 disabled:opacity-50"
-        >
-          {submitting ? 'Saving...' : stepIndex === SECTIONS.length - 1 ? 'Finish' : 'Continue'}
-        </button>
+          <div className="space-y-6">
+            {section.fields.map((field) => (
+              <div key={field.key}>
+                {field.type !== 'checkbox' && (
+                  <label className="block text-sm font-semibold mb-1.5" style={{ color: 'var(--color-heading)' }}>
+                    {field.label} {field.required && <span style={{ color: '#EF4444' }}>*</span>}
+                  </label>
+                )}
+                <FieldInput
+                  field={field}
+                  value={sectionData[field.key]}
+                  onChange={(v) => updateField(field.key, v)}
+                  token={token}
+                />
+                {field.helpText && <p className="text-xs mt-1" style={{ color: 'var(--color-body-light)' }}>{field.helpText}</p>}
+              </div>
+            ))}
+          </div>
+
+          {error && <p className="text-sm mt-4" style={{ color: '#EF4444' }}>{error}</p>}
+
+          <div className="flex justify-between mt-10">
+            <button
+              type="button"
+              disabled={stepIndex === 0}
+              onClick={() => setStepIndex(stepIndex - 1)}
+              className="px-5 py-2.5 rounded-xl font-medium transition disabled:opacity-0"
+              style={{ color: 'var(--color-body)' }}
+            >
+              Back
+            </button>
+            <button
+              type="button"
+              disabled={submitting}
+              onClick={handleContinue}
+              className="btn-primary px-7 py-2.5 rounded-xl disabled:opacity-50"
+            >
+              {submitting ? 'Saving...' : stepIndex === SECTIONS.length - 1 ? 'Finish →' : 'Continue →'}
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
