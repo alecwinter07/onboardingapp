@@ -38,6 +38,7 @@ export const SECTIONS: Section[] = [
       { key: 'email', label: 'Email', type: 'text', required: true },
       { key: 'phone', label: 'Phone', type: 'text', required: true },
       { key: 'existing_dr_relationship', label: 'Do you have an existing relationship with Direct Rate?', type: 'select', options: ['Yes', 'No'], required: true },
+      { key: 'sms_consent', label: 'I agree to receive SMS communications regarding my real estate inquiry, including automated messages. Message and data rates may apply. Reply STOP to unsubscribe at any time.', type: 'checkbox', required: true },
     ],
   },
   {
@@ -46,7 +47,6 @@ export const SECTIONS: Section[] = [
     description: 'Basic information we need for identity verification and scheduling.',
     fields: [
       { key: 'preferred_display_name', label: 'Preferred display name', type: 'text' },
-      { key: 'pronouns', label: 'Pronouns', type: 'text' },
       { key: 'date_of_birth', label: 'Date of birth', type: 'date', required: true },
       { key: 'home_address', label: 'Home address', type: 'address', required: true },
       { key: 'time_zone', label: 'Time zone', type: 'select', required: true, options: ['Eastern', 'Central', 'Mountain', 'Pacific', 'Alaska', 'Hawaii'] },
@@ -61,7 +61,6 @@ export const SECTIONS: Section[] = [
       { key: 'brokerage_name', label: 'Brokerage name', type: 'text', required: true },
       { key: 'brokerage_address', label: 'Brokerage address', type: 'address', required: true },
       { key: 'brokerage_phone', label: 'Brokerage phone', type: 'text', required: true },
-      { key: 'managing_broker_name', label: 'Designated managing broker name', type: 'text', required: true },
       { key: 'licenses', label: 'Real estate license(s) — state, number, expiration', type: 'repeating-license', required: true },
       { key: 'nmls_company_id', label: 'NMLS Company ID (if mortgage-related)', type: 'text' },
       { key: 'nmls_originator_id', label: 'NMLS Originator ID (personal, if applicable)', type: 'text' },
@@ -102,8 +101,6 @@ export const SECTIONS: Section[] = [
       { key: 'voice_sample', label: 'Voice sample, 30–60 sec (optional)', type: 'file' },
       { key: 'intro_video', label: 'Brief intro video (optional)', type: 'file' },
       { key: 'service_tone', label: 'Service tone preferences', type: 'multiselect', options: ['Warm', 'Professional', 'Direct', 'Approachable', 'Energetic'] },
-      { key: 'topics_to_avoid', label: 'Topics to AVOID in content', type: 'tags' },
-      { key: 'lp_slug', label: 'Preferred landing page URL slug', type: 'text', required: true, helpText: 'yourname.level.market' },
     ],
   },
 ];
