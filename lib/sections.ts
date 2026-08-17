@@ -67,7 +67,7 @@ export const SECTIONS: Section[] = [
       { key: 'equal_housing_affirmation', label: 'I affirm compliance with Equal Housing requirements (required for mortgage states)', type: 'checkbox' },
       { key: 'specialty_areas', label: 'Specialty areas', type: 'multiselect', required: true, options: ['First-time buyer', 'Luxury', 'Investor', 'Commercial', 'New construction', '55+'] },
       { key: 'average_price_point', label: 'Average price point', type: 'select', required: true, options: ['Under $300k', '$300k–$500k', '$500k–$750k', '$750k–$1M', '$1M+'] },
-      { key: 'service_area', label: 'Service area cities/zips ($230 on 2+ Selections)', type: 'tags', required: true, helpText: 'This drives your ad targeting — be specific.' },
+      { key: 'service_area', label: 'Service area cities/zips ($200 on 2+ Selections)', type: 'tags', required: true, helpText: 'This drives your ad targeting — be specific.' },
     ],
   },
   {
