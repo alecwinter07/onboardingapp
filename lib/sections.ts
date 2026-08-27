@@ -92,8 +92,8 @@ export const SECTIONS: Section[] = [
     title: 'Brand Preferences',
     description: 'What you want your landing page and content to look like.',
     fields: [
-      { key: 'headshot', label: 'Headshot photo URL', type: 'text', helpText: 'Paste a google drive link to your headshot photo. If skipped, a default avatar applies after 14 days.', required: true },
-      { key: 'hero_background', label: 'Hero background image URL', type: 'text', helpText: 'Paste a google drive link to a background image, or leave blank to use a city default.', required: true },
+      { key: 'headshot', label: 'Headshot photo URL', type: 'text', helpText: 'Paste a google drive link (With Viewer Access) to your headshot photo. If skipped, a default avatar applies after 14 days.', required: true },
+      { key: 'hero_background', label: 'Hero background image URL', type: 'text', helpText: 'Paste a google drive link (With Viewer Access) to a background image, or leave blank to use a city default.', required: true },
       { key: 'tagline', label: 'Tagline (max 12 words)', type: 'text', required: true, maxWords: 12 },
       { key: 'about', label: 'About paragraph (3–5 sentences)', type: 'textarea', required: true },
       { key: 'voice_sample', label: 'Voice sample, 30–60 sec (optional)', type: 'file' },
