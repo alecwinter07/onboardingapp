@@ -67,7 +67,7 @@ export const SECTIONS: Section[] = [
       { key: 'equal_housing_affirmation', label: 'I affirm compliance with Equal Housing requirements (required for mortgage states)', type: 'checkbox' },
       { key: 'specialty_areas', label: 'Specialty areas', type: 'multiselect', required: true, options: ['First-time buyer', 'Luxury', 'Investor', 'Commercial', 'New construction', '55+'] },
       { key: 'average_price_point', label: 'Average price point', type: 'select', required: true, options: ['Under $300k', '$300k–$500k', '$500k–$750k', '$750k–$1M', '$1M+'] },
-      { key: 'service_area', label: 'Service area cities/zips ($200 on 2+ Selections)', type: 'tags', required: true, helpText: 'This drives your ad targeting — be specific.' },
+      { key: 'service_area', label: 'Service area cities/zips ($200 on 2+ Selections)', type: 'tags', required: true, helpText: 'This drives your ad targeting — be specific. Please type one Zip Code and Press Enter Then Type the Next One!' },
     ],
   },
   {
@@ -92,8 +92,8 @@ export const SECTIONS: Section[] = [
     title: 'Brand Preferences',
     description: 'What you want your landing page and content to look like.',
     fields: [
-      { key: 'headshot', label: 'Headshot upload', type: 'file', helpText: 'If skipped, a default avatar applies after 14 days.' },
-      { key: 'hero_background', label: 'Hero background (upload or use city default)', type: 'file' },
+      { key: 'headshot', label: 'Headshot upload', type: 'file', helpText: 'If skipped, a default avatar applies after 14 days.', required: true },
+      { key: 'hero_background', label: 'Hero background (upload or use city default)', type: 'file', required: true },
       { key: 'brand_color_primary', label: 'Primary brand color', type: 'color' },
       { key: 'brand_color_secondary', label: 'Secondary brand color', type: 'color' },
       { key: 'tagline', label: 'Tagline (max 12 words)', type: 'text', required: true, maxWords: 12 },
