@@ -92,7 +92,7 @@ export const SECTIONS: Section[] = [
     title: 'Brand Preferences',
     description: 'What you want your landing page and content to look like.',
     fields: [
-      { key: 'headshot', label: 'Headshot upload', type: 'url', helpText: 'If skipped, a default avatar applies after 14 days.', required: true },
+      { key: 'headshot', label: 'Headshot upload', type: 'file', helpText: 'If skipped, a default avatar applies after 14 days.', required: true },
       { key: 'hero_background', label: 'Hero background (upload or use city default)', type: 'file', required: true },
       { key: 'brand_color_primary', label: 'Primary brand color', type: 'color' },
       { key: 'brand_color_secondary', label: 'Secondary brand color', type: 'color' },
