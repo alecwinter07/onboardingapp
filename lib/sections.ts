@@ -34,9 +34,9 @@ export const SECTIONS: Section[] = [
     title: 'Confirm Your Details',
     description: 'A few details we already have on file — just confirm they\'re correct.',
     fields: [
-      { key: 'full_name', label: 'Full name', type: 'text', required: true },
-      { key: 'email', label: 'Email', type: 'text', required: true },
-      { key: 'phone', label: 'Phone', type: 'text', required: true },
+      { key: 'full_name', label: 'Full name (Same As You Entered on Stripe)', type: 'text', required: true },
+      { key: 'email', label: 'Email (Same As You Entered on Stripe)', type: 'text', required: true },
+      { key: 'phone', label: 'Phone (Same As You Entered on Stripe)', type: 'text', required: true },
       { key: 'existing_dr_relationship', label: 'Do you have an existing relationship with Direct Rate?', type: 'select', options: ['Yes', 'No'], required: true },
       { key: 'sms_consent', label: 'I agree to receive SMS communications regarding my real estate inquiry, including automated messages. Message and data rates may apply. Reply STOP to unsubscribe at any time.', type: 'checkbox', required: true },
     ],
